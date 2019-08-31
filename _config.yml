@@ -4,5 +4,5 @@ url: https://jkenzer.github.io/sketchbook/
 description: > # this means to ignore newlines until "show_excerpts:"
   Sketchbook of p5.js projects
 baseurl: /sketchbook
-theme: jekyll-theme-merlot
-#remote_theme: huangyz0918/moving
+#theme: jekyll-theme-merlot
+remote_theme: huangyz0918/moving
