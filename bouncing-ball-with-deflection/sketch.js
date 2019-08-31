@@ -13,7 +13,13 @@ function setup() {
 
 function mousePressed() {
   ball.posX = mouseX;
+  if(ball.posX % 2 > 0){
+    ball.posX -=1;
+  }
   ball.posY = mouseY;
+  if(ball.posY % 2 > 0){
+    ball.posY -=1;
+  }
   // prevent default
   return false;
 }
@@ -27,4 +33,16 @@ function draw(){
   ball.show();
   ball.hit(block);
 
+  if(keyIsDown(LEFT_ARROW)){
+    block.x -=2;
+  }
+  if(keyIsDown(RIGHT_ARROW)){
+    block.x +=2;
+  }
+  if(keyIsDown(DOWN_ARROW)){
+    block.y +=2;
+  }
+  if(keyIsDown(UP_ARROW)){
+    block.y -=2;
+  }
 }
