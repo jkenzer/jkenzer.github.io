@@ -2,7 +2,8 @@ let ball;
 let block = {};
 
 function setup() {
-  createCanvas(600, 400);
+  let canvas = createCanvas(600, 400);
+  canvas.parent("sketch");
   background(54,123,12);
   ball = new Ball();
   block.height = 20;

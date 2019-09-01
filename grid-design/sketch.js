@@ -5,7 +5,8 @@ function setup(){
     grid[i] = new Array(24);
   }
   frameRate(10);
-  createCanvas(645, 485);
+  let canvas = createCanvas(645, 485);
+  canvas.parent("sketch");
 }
 posX = 30;
 posY = 10;
