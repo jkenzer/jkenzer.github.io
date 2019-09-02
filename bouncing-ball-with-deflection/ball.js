@@ -30,7 +30,6 @@ class Ball {
     this.bottom = this.posY - this.fromCenter;
     this.right = this.posX + this.fromCenter;
     this.left = this.posX - this.fromCenter;
-    console.log(this.width);
     //moving down
     if(this.goY === 1){
       if(this.isInRange(this.top, block.y-2,block.y+2) && this.isInRange(this.posX, block.x, block.x + block.width)){
