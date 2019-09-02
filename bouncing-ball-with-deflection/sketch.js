@@ -25,10 +25,11 @@ function mousePressed() {
   return false;
 }
 function draw(){
-  background(54,123,12);
+  background('#2C4770');
 
   //deflection block
-  fill(0);
+  stroke(255);
+  fill('#051938');
   rect(block.x, block.y, block.width, block.height);
 
   ball.show();

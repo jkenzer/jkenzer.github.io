@@ -7,8 +7,6 @@ class Ball {
   fromCenter = this.diameter/2;
 
   constructor(){
-    stroke(255);
-    fill(255,156,32);
     ellipse(width/2,height/2,20,20);
   }
 
@@ -19,7 +17,8 @@ class Ball {
 
     this.detectEdge();
 
-    fill(255,156,32);
+    stroke('#AA6639');
+    fill('#D4BF6A');
     ellipse(this.posX,this.posY,this.diameter,this.diameter);
 
   }

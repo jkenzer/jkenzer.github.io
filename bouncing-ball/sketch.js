@@ -11,9 +11,9 @@ let goX = 1;
 let goY = 1;
 
 function draw(){
-  background(54,123,12);
-  stroke(255);
-  fill(255,156,32);
+  background('#2D882D');
+  stroke('#AA6C39');
+  fill('#882D61');
   ellipse(posX,posY,20,20);
 
   goX ? posX += 2 : posX -= 2;
