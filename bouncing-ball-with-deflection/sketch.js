@@ -6,7 +6,7 @@ function setup() {
   canvas.parent("sketch");
   background(54,123,12);
   ball = new Ball();
-  block.height = 20;
+  block.height =40;
   block.width = 120;
   block.x = (width/2) - block.width/2;
   block.y = (height/2) - block.height/2
