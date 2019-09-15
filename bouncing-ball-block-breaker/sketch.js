@@ -22,7 +22,6 @@ function draw(){
   for(let block = 0 ; block < blocks.length ; block++){
     rect(blocks[block].x, blocks[block].y, blocks[block].width, blocks[block].height);
     if(ball.hit(blocks[block])){
-      console.log("hit block " + block);
       blocks.splice(block,1);
       block--;
     }

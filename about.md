@@ -1,5 +1,6 @@
-# p5.js Sketchbook
-Using the p5.js library with JavaScript to create interesting visuals. Still very early in the learning stage.
-
-## Sub learning - Jekyll
-Also learning all about github pages and Jekyll
+# Josh Kenzer
+* [SketchBook](https://jkenzer.github.io/sketchbook/)
+* [Github](https://www.github.com/jkenzer/)
+* [Twitter](https://www.twitter.com/jkenzer/)
+* [LinkedIn](https://www.linkedin.com/in/josh-kenzer-890545162/)
+* [MST Solutions](https://www.mstsolutions.com/)
