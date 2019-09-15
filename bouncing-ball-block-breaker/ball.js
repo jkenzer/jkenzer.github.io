@@ -25,6 +25,7 @@ class Ball {
   
   hit(block){
 
+    let hit = false;
     this.top = this.posY + this.fromCenter;
     this.bottom = this.posY - this.fromCenter;
     this.right = this.posX + this.fromCenter;
@@ -33,23 +34,28 @@ class Ball {
     if(this.goY === 1){
       if(this.isInRange(this.top, block.y-2,block.y+2) && this.isInRange(this.posX, block.x, block.x + block.width)){
         this.goY = 0;
+        hit = true;
       }
     }else if(this.goY === 0){
       if(this.isInRange(block.y+block.height,this.bottom-2, this.bottom+2) && this.isInRange(this.posX, block.x, block.x + block.width)){
         this.goY = 1;
+        hit = true;
       }
     }
     //moving right
     if(this.goX === 1){
       if(this.isInRange(this.right, block.x-2, block.x+2) && this.isInRange(this.posY, block.y, block.y + block.height)){
         this.goX = 0;
+        hit = true;
       }
     }else if(this.goX === 0){
       if(this.isInRange(block.x+block.width, this.left-2, this.left+2) && this.isInRange(this.posY, block.y, block.y + block.height)){
         this.goX = 1;
+        hit = true;
       }
     }
 
+    return hit;
   }
 
   detectEdge(){

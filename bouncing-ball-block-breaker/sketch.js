@@ -1,5 +1,5 @@
 let ball;
-let numOfBlocks = 5;
+let numOfBlocks = 15;
 let blocks = [];
 
 function setup() {
@@ -19,11 +19,15 @@ function draw(){
   //deflection block
   stroke(255);
   fill('#051938');
-  blocks.forEach( (block) => {
-    rect(block.x, block.y, block.width, block.height);
-  });
+  for(let block = 0 ; block < blocks.length ; block++){
+    rect(blocks[block].x, blocks[block].y, blocks[block].width, blocks[block].height);
+    if(ball.hit(blocks[block])){
+      console.log("hit block " + block);
+      blocks.splice(block,1);
+      block--;
+    }
+  };
 
   ball.show();
-  //ball.hit(block);
 
 }
