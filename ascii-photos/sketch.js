@@ -9,7 +9,7 @@ function preload() {
   images[0] = loadImage('IMG_0516.jpg');
   images[1] =loadImage('IMG_0855.jpg');
   images[2] = loadImage('IMG_1327.jpg');
-  images[3] = loadImage('IMG_1480.JPG');
+  //images[3] = loadImage('IMG_1480.JPG');
 }
 
 function setup() {
@@ -28,7 +28,7 @@ function draw(){
   background(0);
   cyclic_t = millis() * 0.0002 % images.length;
   gfx.image(images[floor(cyclic_t)], 0, 0, gfx.width, gfx.height);
-  gfx.filter(POSTERIZE, 3);
+  gfx.filter(POSTERIZE, 2);
   ascii_arr = myAsciiArt.convert(gfx);
   myAsciiArt.typeArray2d(ascii_arr, this);
   tint(255, pow(1.0 - (cyclic_t % 1.0), 4) * 255);
