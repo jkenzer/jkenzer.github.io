@@ -6,9 +6,9 @@ var ascii_arr;
 var cyclic_t;
 
 function preload() {
-  images[0] = loadImage('IMG_0516.jpg');
-  images[1] =loadImage('IMG_0855.jpg');
-  images[2] = loadImage('IMG_1327.jpg');
+  images[0] = loadImage('/ascii-photos/IMG_0516.jpg');
+  images[1] =loadImage('/ascii-photos/IMG_0855.jpg');
+  images[2] = loadImage('/ascii-photos/IMG_1327.jpg');
   //images[3] = loadImage('IMG_1480.JPG');
 }
 
