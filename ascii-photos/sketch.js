@@ -14,6 +14,7 @@ function preload() {
 
 function setup() {
   let canvas = createCanvas(600, 400);
+  canvas.parent("sketch");
   gfx = createGraphics(asciiart_width, asciiart_height);
   gfx.pixelDensity(1);
   myAsciiArt = new AsciiArt(this);
