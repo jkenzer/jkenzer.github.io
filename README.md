@@ -1,6 +1,6 @@
 # TIL
 > Today I Learned
-A collection of software engineering tips that I learn every day.
+A collection of things I learned going about life.
 ---
 ### Github
 
