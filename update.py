@@ -24,7 +24,6 @@ def main():
                     pass
             continue
 
-        files = [os.path.join(dirs, f) for f in files if not f.endswith('.html')]
         category = os.path.basename(root)
 
         content += "### {}\n\n".format(category)
