@@ -15,7 +15,6 @@ def main():
     content += HEADER
 
     for root, dirs, files in os.walk("."):
-        files = [os.path.join(dir, f) for f in files if not f.endswith('.html')]
         dirs.sort()
         if root == '.':
             for dir in ('.git', '.github'):
@@ -25,6 +24,7 @@ def main():
                     pass
             continue
 
+        files = [os.path.join(dirs, f) for f in files if not f.endswith('.html')]
         category = os.path.basename(root)
 
         content += "### {}\n\n".format(category)
