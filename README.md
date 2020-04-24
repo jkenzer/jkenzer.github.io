@@ -1,5 +1,5 @@
 # TIL
-> Today I Learned
+> Today I Learned:
 A collection of things I learned going about life.
 ---
 ### Github
@@ -9,12 +9,4 @@ A collection of things I learned going about life.
 ### LWC
 
 - [Array Push Doesnt Update](LWC/Array-Push-Doesnt-Update.md)
-
-### about
-
-- [Index](about/index.html)
-
-### css
-
-- [Main](css/main.css)
 
