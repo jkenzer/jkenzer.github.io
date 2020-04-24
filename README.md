@@ -1,6 +1,10 @@
 # TIL
 > Today I Learned: A collection of things I learned going about life.
 
+### ACT
+
+- [Observing self vs thinking self](ACT/Observing Self vs Thinking Self.md)
+
 ### Github
 
 - [Github Actions](Github/Github-Actions.MD)
