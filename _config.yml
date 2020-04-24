@@ -1,6 +1,12 @@
+title: Josh Kenzer's Notebook
+description: A collection of things I've learned
 name: Josh Kenzer
-markdown: kramdown
-theme: jekyll-theme-midnight
+show_downloads: false
+theme: jekyll-theme-dinky
 twitter_username: jkenzer
 github_username:  jkenzer
 linkedin_username: josh-kenzer
+readme_index:
+  enabled:          true
+  remove_originals: false
+  with_frontmatter: false

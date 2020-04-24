@@ -3,10 +3,16 @@
 import os
 
 
-HEADER="""# TIL
-> Today I Learned
-A collection of things I learned going about life.
----
+HEADER = """# TIL
+> Today I Learned: A collection of things I learned going about life.
+
+"""
+
+FOOTER = """# About Josh Kenzer
+* [About Page](about)
+* [My Job](https://www.azfoundation.org/)
+* [Salesforce Trailhead](https://trailblazer.me/id/jkenzer)
+* [Fledgling Sketchbook](sketchbook)
 """
 
 
@@ -17,7 +23,7 @@ def main():
     for root, dirs, files in os.walk("."):
         dirs.sort()
         if root == '.':
-            for dir in ('.git', '.github'):
+            for dir in ('.git', '.github', 'css', 'about'):
                 try:
                     dirs.remove(dir)
                 except ValueError:
@@ -29,12 +35,16 @@ def main():
         content += "### {}\n\n".format(category)
 
         for file in files:
-            name = os.path.basename(file).split('.')[0]
-            name = " ".join(word.capitalize() for word in name.split('-'))
-            content += "- [{}]({})\n".format(name, os.path.join(category, file))
+            ext = os.path.basename(file).split('.')[1]
+            if ext.lower() == 'md':
+                name = os.path.basename(file).split('.')[0]
+                name = " ".join(word.capitalize() for word in name.split('-'))
+                content += "- [{}]({})\n".format(name,
+                                                 os.path.join(category, file))
         content += "\n"
 
     with open("README.md", "w") as fd:
+        content += FOOTER
         fd.write(content)
 
 

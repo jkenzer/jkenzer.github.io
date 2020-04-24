@@ -1,16 +1,20 @@
 # TIL
-> Today I Learned
-A collection of software engineering tips that I learn every day.
----
+> Today I Learned: A collection of things I learned going about life.
+
+### ACT
+
+- [Observing Self Vs Thinking Self](ACT/Observing-Self-vs-Thinking-Self.md)
+
 ### Github
 
 - [Github Actions](Github/Github-Actions.MD)
 
-### about
+### LWC
 
-- [Index](about/index.html)
+- [Array Push Doesnt Update](LWC/Array-Push-Doesnt-Update.md)
 
-### css
-
-- [Main](css/main.css)
-
+# About Josh Kenzer
+* [About Page](about)
+* [My Job](https://www.azfoundation.org/)
+* [Salesforce Trailhead](https://trailblazer.me/id/jkenzer)
+* [Fledgling Sketchbook](sketchbook)
