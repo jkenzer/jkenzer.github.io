@@ -4,9 +4,8 @@ import os
 
 
 HEADER = """# TIL
-> Today I Learned:
-> A collection of things I learned going about life.
----
+> Today I Learned: A collection of things I learned going about life.
+
 """
 
 FOOTER = """# About Josh Kenzer
