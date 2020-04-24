@@ -4,3 +4,7 @@ theme: jekyll-theme-midnight
 twitter_username: jkenzer
 github_username:  jkenzer
 linkedin_username: josh-kenzer
+readme_index:
+  enabled:          true
+  remove_originals: false
+  with_frontmatter: false
