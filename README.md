@@ -3,7 +3,7 @@
 
 ### ACT
 
-- [Observing self vs thinking self](ACT/Observing Self vs Thinking Self.md)
+- [Observing Self Vs Thinking Self](ACT/Observing-Self-vs-Thinking-Self.md)
 
 ### Github
 
