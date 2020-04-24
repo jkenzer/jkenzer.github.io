@@ -10,7 +10,7 @@
 - [Array Push Doesnt Update](LWC/Array-Push-Doesnt-Update.md)
 
 # About Josh Kenzer
-* [About Page](About)
+* [About Page](about)
 * [My Job](https://www.azfoundation.org/)
 * [Salesforce Trailhead](https://trailblazer.me/id/jkenzer)
 * [Fledgling Sketchbook](sketchbook)
