@@ -9,7 +9,7 @@ HEADER = """# TIL
 """
 
 FOOTER = """# About Josh Kenzer
-* [About Page](About)
+* [About Page](about)
 * [My Job](https://www.azfoundation.org/)
 * [Salesforce Trailhead](https://trailblazer.me/id/jkenzer)
 * [Fledgling Sketchbook](sketchbook)
