@@ -23,7 +23,7 @@ jobs:
         python update.py
     - name: Push the change
       run: |
-          git config --global user.name 'Andrei Cioara'
-          git config --global user.email 'andrei@cioara.me'
+          git config --global user.name 'Josh Kenzer'
+          git config --global user.email 'jkenzer@gmail.com'
           git commit -am "Automated update of README.md" || true
           git push
