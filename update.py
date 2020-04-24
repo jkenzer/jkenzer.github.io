@@ -3,10 +3,17 @@
 import os
 
 
-HEADER="""# TIL
+HEADER = """# TIL
 > Today I Learned:
-A collection of things I learned going about life.
+> A collection of things I learned going about life.
 ---
+"""
+
+FOOTER = """# About Josh Kenzer
+* [About Page](About)
+* [My Job](https://www.azfoundation.org/)
+* [Salesforce Trailhead](https://trailblazer.me/id/jkenzer)
+* [Fledgling Sketchbook](sketchbook)
 """
 
 
@@ -33,10 +40,12 @@ def main():
             if ext.lower() == 'md':
                 name = os.path.basename(file).split('.')[0]
                 name = " ".join(word.capitalize() for word in name.split('-'))
-                content += "- [{}]({})\n".format(name, os.path.join(category, file))
+                content += "- [{}]({})\n".format(name,
+                                                 os.path.join(category, file))
         content += "\n"
 
     with open("README.md", "w") as fd:
+        content += FOOTER
         fd.write(content)
 
 
