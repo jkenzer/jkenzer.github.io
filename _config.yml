@@ -6,6 +6,7 @@ theme: jekyll-theme-dinky
 twitter_username: jkenzer
 github_username:  jkenzer
 linkedin_username: josh-kenzer
+trailhead_username: jkenzer
 readme_index:
   enabled:          true
   remove_originals: false
