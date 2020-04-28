@@ -13,6 +13,10 @@
 
 - [Array Push Doesnt Update](LWC/Array-Push-Doesnt-Update.md)
 
+### Salesforce
+
+- [Setting Community Access To Uploaded Files](Salesforce/Setting-Community-Access-to-Uploaded-Files.md)
+
 # About Josh Kenzer
 * [About Page](about)
 * [My Job](https://www.azfoundation.org/)
