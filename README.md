@@ -9,6 +9,10 @@
 
 - [Github Actions](Github/Github-Actions.MD)
 
+### Javascript
+
+- [Set And Spread Operators](Javascript/Set-and-Spread-Operators.md)
+
 ### LWC
 
 - [Array Push Doesnt Update](LWC/Array-Push-Doesnt-Update.md)
