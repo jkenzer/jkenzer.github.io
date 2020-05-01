@@ -19,6 +19,7 @@
 
 ### Salesforce
 
+- [Using Year And Month In Auto Number Fields](Salesforce/Using-Year-and-Month-in-Auto-Number-Fields.md)
 - [Setting Community Access To Uploaded Files](Salesforce/Setting-Community-Access-to-Uploaded-Files.md)
 
 # About Josh Kenzer
