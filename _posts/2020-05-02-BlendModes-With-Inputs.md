@@ -1,9 +1,9 @@
 # Trying in a Markdown file
 
-    <script src="p5.min.js"></script>
-    <script src="blend-mode/blendmode-inputs.js"></script>
+<script src="p5.min.js"></script>
+<script src="blend-mode/blendmode-inputs.js"></script>
 
-    <div id="sketch"></div>
+<div id="sketch"></div>
     <h2>Blend Mode</h2>
     N:ODD
     <select onchange="handleonchange(this,'ODD')">
