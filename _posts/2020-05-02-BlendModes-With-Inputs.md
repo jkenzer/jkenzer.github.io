@@ -1,11 +1,12 @@
 # Trying in a Markdown file
 
-<script src="p5.min.js"></script>
-<script src="blend-mode/blendmode-inputs.js"></script>
+<script src="../p5.min.js"></script>
+<script src="../blend-mode/blendmode-inputs.js"></script>
 
 <div id="sketch"></div>
-    <h2>Blend Mode</h2>
-    N:ODD
+## Blend Mode
+
+N:ODD
     <select onchange="handleonchange(this,'ODD')">
       <option value="0">BLEND</option>
       <option value="1">ADD</option>
@@ -20,7 +21,7 @@
       <option value="10">DODGE</option>
       <option value="11">BURN</option>
     </select>
-    N:EVEN
+N:EVEN
     <select onchange="handleonchange(this,'EVEN')">
       <option value="1">ADD</option>
       <option value="0">BLEND</option>
@@ -35,5 +36,5 @@
       <option value="10">DODGE</option>
       <option value="11">BURN</option>
     </select>
-    <h2>Stroke Weight</h2>
-    <input value="30" type="text" onblur="handleStrokeChange(this)" />
+## Stroke Weight
+<input value="30" type="text" onblur="handleStrokeChange(this)" />
