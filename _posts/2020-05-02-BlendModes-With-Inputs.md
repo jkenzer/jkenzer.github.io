@@ -4,9 +4,10 @@
 <script src="/sketchbook/blend-mode/blendmode-inputs.js"></script>
 
 <div id="sketch"></div>
+
 ## Blend Mode
 
-N:ODD
+### N:ODD
     <select onchange="handleonchange(this,'ODD')">
       <option value="0">BLEND</option>
       <option value="1">ADD</option>
@@ -21,7 +22,7 @@ N:ODD
       <option value="10">DODGE</option>
       <option value="11">BURN</option>
     </select>
-N:EVEN
+### N:EVEN
     <select onchange="handleonchange(this,'EVEN')">
       <option value="1">ADD</option>
       <option value="0">BLEND</option>
