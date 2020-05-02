@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html>
+# Trying in a Markdown file
 
-  <body>
     <script src="p5.min.js"></script>
     <script src="blend-mode/blendmode-inputs.js"></script>
 
@@ -39,6 +37,3 @@
     </select>
     <h2>Stroke Weight</h2>
     <input value="30" type="text" onblur="handleStrokeChange(this)" />
-  </body>
-
-</html>
