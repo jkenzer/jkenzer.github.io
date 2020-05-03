@@ -2,9 +2,9 @@
 const particles = [];
 
 function setup() {
-  let canvas = createCanvas(window.innerWidth, window.innerHeight);
+  let canvas = createCanvas(600, 600);
   canvas.parent("sketch");
-  const particlesLength = Math.floor(window.innerWidth / 10);
+  const particlesLength = Math.floor(width / 10);
 
   for (let i = 0; i < particlesLength; i++) {
     particles.push(new Particle());
