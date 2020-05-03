@@ -2,7 +2,7 @@
 const particles = [];
 
 function setup() {
-  let canvas = createCanvas(600, 600);
+  let canvas = createCanvas(740, 500);
   canvas.parent("sketch");
   const particlesLength = Math.floor(width / 10);
 
