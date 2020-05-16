@@ -23,7 +23,7 @@ def main():
     for root, dirs, files in os.walk("."):
         dirs.sort()
         if root == '.':
-            for dir in ('.git', '.github', 'css', 'about', '_layouts'):
+            for dir in ('.git', '.github', 'css', 'about', '_layouts', 'images'):
                 try:
                     dirs.remove(dir)
                 except ValueError:
