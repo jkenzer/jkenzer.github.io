@@ -25,9 +25,6 @@
 - [Salesforce As A Tool Analogy](Salesforce/Salesforce-As-a-Tool-Analogy.md)
 - [Using Year And Month In Auto Number Fields](Salesforce/Using-Year-and-Month-in-Auto-Number-Fields.md)
 
-### images
-
-
 # About Josh Kenzer
 * [About Page](about)
 * [My Job](https://www.azfoundation.org/)
