@@ -1,0 +1,4 @@
+# The Observing Self is Non-Judgemental
+Judging, whether it's judging others or yourself, are thoughts and categorizing those thoughts as good or bad. That's why it's completely normal and human judge. You can't not judge. However, it's some what freeing to understand that in order to have thoughts that you then judge, it has to be the thinking self that does both the thinking and the judging. The observing self can not, by definition, judge. It can observe and acknowledge the judgements, but the observing self isn't judging.
+
+- Page 125 of [The Happiness Trap](https://thehappinesstrap.com/)
