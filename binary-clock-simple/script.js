@@ -2,10 +2,16 @@ let dots = {};
 let placeSpace = 40;
 let timeSpace = 100;
 let bottomRow = 400;
+
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   textFont('Inconsolata');
 
+  bottomRow = height / 2 - 100;
+  console.log(bottomRow);
+  if (bottomRow - 150 < 0) {
+    bottomRow = 175;
+  }
   // create an array
   dots = {
     hours: [],
@@ -13,7 +19,9 @@ function setup() {
     secs: []
   };
 
-  let start = width / 3;
+  // start in the center and subtrack back to the left position
+  // this is ugly
+  let start = (width / 2) - placeSpace - timeSpace - placeSpace;
   dots.hours.tens = [new Dot(start, bottomRow - 50), new Dot(start, bottomRow)];
   start += placeSpace;
   dots.hours.ones = [new Dot(start, bottomRow - 100), new Dot(start, bottomRow - 50), new Dot(start, bottomRow)];
