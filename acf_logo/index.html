@@ -17,7 +17,7 @@
       }
 
       .container {
-        height: 100vh;
+        height: 80vh;
         padding: 0;
         margin: 0;
         display: flex;
@@ -87,7 +87,7 @@
 
   <body>
     <div class="container">
-      <div class='logo'>
+      <div class='logo moveme'>
         <!-- <div style="border: 1px solid blue; width:500px; height: 500px;">
           Test
         </div> -->
@@ -97,14 +97,14 @@
           </svg>
         </div>
       </div>
-      <div class="quote">
+      <div class="quote moveme">
         <blockquote id="quote"></blockquote>
         <cite><span id="author"></span></cite>
       </div>
     </div>
     <script src='ztext.min.js'></script>
     <script>
-      const ztxt = new Ztextify(".logo", {
+      const ztxt = new Ztextify(".moveme", {
         depth: "30px",
         layers: 1,
         fade: false,
@@ -116,7 +116,11 @@
         {
           quote: 'A dream you dream alone is only a dream.  A dream you dream together is reality.',
           author: 'Yoko Ono'
-        }
+        },
+        {
+          quote: 'Alone we can do so little; together we can do so much.',
+          author: 'Helen Keller'
+        },
       ];
       const qIndex = Math.floor(Math.random() * quotes.length);
       document.querySelector('#quote').innerHTML = `<p>${quotes[qIndex].quote}</p>`;
