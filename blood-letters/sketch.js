@@ -33,14 +33,7 @@ function setup() {
     strokeWeight(2);
     point(spot.x + offset.x, spot.y + offset.y);
   }
-
-
-
-
-
 }
-
-
 
 function draw() {
   //background(0, 10);
@@ -54,15 +47,10 @@ function draw() {
     }
   }
 
-
   for (let particle of particles) {
     particle.show();
     particle.update();
   }
 
-  particles = particles.filter(p => !p.isDead());
-
-
-
-
+  particles = particles.filter((p) => !p.isDead());
 }
