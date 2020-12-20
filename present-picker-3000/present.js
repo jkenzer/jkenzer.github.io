@@ -1,14 +1,15 @@
 class Present {
-  constructor(num, xpos, ypos) {
+  constructor(num, xpos, ypos, letter) {
     this.num = num;
     this.xpos = xpos;
     this.ypos = ypos;
     this.active = true;
     this.size = 60;
-    this.color = "red";
+    this.color = "#AD326B";
     this.fontColor = "white";
     this.lastChoice = false;
     this.strokeColor = 51;
+    this.letter = letter;
   }
 
   draw() {
@@ -19,7 +20,8 @@ class Present {
     fill(this.fontColor);
     textSize(32);
     textAlign(CENTER);
-    text(this.num, this.xpos, this.ypos + 10);
+    let display = this.active ? this.num : this.letter;
+    text(display, this.xpos, this.ypos + 10);
   }
 
   clicked(random = false) {
@@ -33,6 +35,7 @@ class Present {
 
     let d = dist(mouseX, mouseY, this.xpos, this.ypos);
     if (d <= this.size / 2) {
+      console.log("clicked");
       this.color = "gray";
       this.fontColor = "darkgray";
       this.active = false;
