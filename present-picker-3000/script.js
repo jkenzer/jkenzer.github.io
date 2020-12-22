@@ -10,10 +10,14 @@ let input;
 let buttonBonus;
 let winner;
 
+function preload() {
+  song = loadSound("assets/Sleigh-bells-sound.mp3");
+}
+
 function setup() {
   let canvas = createCanvas(1100, 915);
   canvas.parent("sketch");
-  textFont("Inconsolata");
+  textFont("Langar");
 
   background("#5777A6");
 
@@ -59,6 +63,7 @@ function setup() {
     }
   }
   ornaments.push(new Present("B", width / 2, 75, letters[0]));
+  ornaments[13].strokeColor = 255;
 
   button = createButton("Choose Random");
   button.position(20, height - 75);
@@ -80,7 +85,9 @@ function setup() {
   buttonBonus.style("display:none");
   buttonBonus.mousePressed(checkAnswer);
 
-  bonusText = createElement("h2", "What is the phrase that pays?");
+  bonusText = createElement("h2", "Answer");
+  bonusText.style("font-weight:400;font-size:30px;color:#ffffff");
+
   bonusText.position(20, 70);
   bonusText.style("display:none");
 }
@@ -89,16 +96,21 @@ function draw() {
   fill("#445139");
 
   headerText = createElement("h2", "Eduardo's Present Picker");
+  headerText.style("font-weight:400;font-size:40px;color:#ffffff");
   headerText.position(20, 5);
 
   triangle(width / 2, 75, 200, height - 200, width - 200, height - 200);
   fill("#723F29");
   rect(width / 2 - 20, height - 200, 40, 200);
 
+  push();
+  translate(width / 2, 75);
+  star(0, 0, 30, 70, 5);
+  pop();
+
   ornaments.forEach((ornament, index) => {
     if (winner) {
-      ornament.color = "#A6001D";
-      ornament.fontColor = "white";
+      ornament.winner = true;
     }
     ornament.draw();
   });
@@ -120,6 +132,7 @@ function draw() {
     bonusText.style("display:none");
     buttonBonus.style("display:none");
     winnerText = createElement("h2", "Winner!!!");
+    winnerText.style("font-weight:400;font-size:60px;color:#ffffff");
     winnerText.position(20, 70);
   }
 }
@@ -134,6 +147,10 @@ function checkAnswer() {
 }
 
 function mouseClicked() {
+  song.play();
+  setTimeout(function () {
+    song.stop();
+  }, 1000);
   resetLastChoice();
   for (let x = 0; x < ornaments.length; x++) {
     ornaments[x].clicked();
@@ -170,4 +187,20 @@ function setLastChoice() {
     }
   });
   lastChoiceOrnament.num = lastChoice;
+}
+
+function star(x, y, radius1, radius2, npoints) {
+  let angle = TWO_PI / npoints;
+  let halfAngle = angle / 2.0;
+  fill(173, 50, 107);
+  beginShape();
+  for (let a = 0; a < TWO_PI; a += angle) {
+    let sx = x + cos(a) * radius2;
+    let sy = y + sin(a) * radius2;
+    vertex(sx, sy);
+    sx = x + cos(a + halfAngle) * radius1;
+    sy = y + sin(a + halfAngle) * radius1;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
 }

@@ -5,19 +5,35 @@ class Present {
     this.ypos = ypos;
     this.active = true;
     this.size = 60;
-    this.color = "#AD326B";
-    this.fontColor = "white";
+    this.winner = false;
     this.lastChoice = false;
     this.strokeColor = 51;
     this.letter = letter;
   }
 
   draw() {
-    stroke(this.strokeColor);
+    if (this.strokeColor != 255) {
+      stroke(this.strokeColor);
+    } else {
+      stroke(173, 50, 107);
+    }
     strokeWeight(1);
-    fill(this.color);
+    if (this.active) {
+      fill(173, 50, 107);
+    } else {
+      if (this.winner) {
+        fill(173, 50, 107);
+      } else {
+        fill(244, 229, 22);
+      }
+    }
     circle(this.xpos, this.ypos, this.size);
-    fill(this.fontColor);
+    if (this.active) {
+      fill("white");
+    } else {
+      fill(173, 50, 107);
+    }
+
     textSize(32);
     textAlign(CENTER);
     let display = this.active ? this.num : this.letter;
@@ -26,20 +42,18 @@ class Present {
 
   clicked(random = false) {
     if (random) {
-      this.color = "gray";
-      this.fontColor = "darkgray";
-      this.active = false;
-      this.lastChoice = true;
+      this.markSelected();
       return;
     }
 
     let d = dist(mouseX, mouseY, this.xpos, this.ypos);
     if (d <= this.size / 2) {
-      console.log("clicked");
-      this.color = "gray";
-      this.fontColor = "darkgray";
-      this.active = false;
-      this.lastChoice = true;
+      this.markSelected();
     }
+  }
+
+  markSelected() {
+    this.active = false;
+    this.lastChoice = true;
   }
 }
