@@ -20,7 +20,8 @@ function preload() {
 }
 
 function setup() {
-  let canvas = createCanvas(1100, 915);
+  // let canvas = createCanvas(1100, 915);
+  let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent("sketch");
   textFont("Langar");
   gif.pause();
@@ -106,7 +107,14 @@ function draw() {
 
   //tree
   fill("#445139");
-  triangle(width / 2, 75, 200, height - 200, width - 200, height - 200);
+  triangle(
+    width / 2,
+    75,
+    width / 4,
+    height - 200,
+    (width / 4) * 3,
+    height - 200
+  );
   // trunk
   fill("#723F29");
   rect(width / 2 - 20, height - 200, 40, 200);
@@ -148,7 +156,7 @@ function draw() {
   // gif
   push();
   scale(0.35);
-  translate(windowWidth / 2 - 50 * 2, windowHeight * 3 - gif.height - 70);
+  translate((windowWidth / 2) * 2, windowHeight * 3 - gif.height - 65);
   image(gif, 0, 0);
   pop();
   // create a random number of snowflakes each frame
