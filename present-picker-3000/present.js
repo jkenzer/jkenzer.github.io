@@ -53,6 +53,10 @@ class Present {
   }
 
   markSelected() {
+    song.play();
+    setTimeout(function () {
+      song.stop();
+    }, 1000);
     this.active = false;
     this.lastChoice = true;
   }
