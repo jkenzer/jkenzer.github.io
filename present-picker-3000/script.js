@@ -165,9 +165,14 @@ function draw() {
   }
 
   // loop through snowflakes with a for..of loop
-  for (let flake of snowflakes) {
-    flake.update(t); // update snowflake position
-    flake.display(); // draw snowflake
+  console.log(snowflakes.length);
+  for (let f = 0; f < snowflakes.length; f++) {
+    if (snowflakes[f].posY > windowHeight || snowflakes[f].posX > windowWidth || snowflakes[f].posX < 0) {
+      snowflakes.slice(f, 1);
+    } else {
+      snowflakes[f].update(t); // update snowflake position
+      snowflakes[f].display(); // draw snowflake
+    }
   }
 }
 
