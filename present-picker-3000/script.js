@@ -95,15 +95,15 @@ function setup() {
 
   bonusText.position(20, 70);
   bonusText.style("display:none");
+
+  headerText = createElement("h2", "Eduardo's Present Picker");
+  headerText.style("font-weight:400;font-size:40px;color:#ffffff");
+  headerText.position(20, 5);
 }
 
 function draw() {
   background("#5777A6");
   let t = frameCount / 60;
-
-  headerText = createElement("h2", "Eduardo's Present Picker");
-  headerText.style("font-weight:400;font-size:40px;color:#ffffff");
-  headerText.position(20, 5);
 
   //tree
   fill("#445139");
@@ -153,18 +153,20 @@ function draw() {
     winnerText.position(20, 70);
   }
 
-  // gif
+  // // gif
   push();
   scale(0.35);
   translate((windowWidth / 2) * 2, windowHeight * 3 - gif.height - 65);
   image(gif, 0, 0);
   pop();
-  // create a random number of snowflakes each frame
-  for (let i = 0; i < random(5); i++) {
-    snowflakes.push(new snowflake()); // append snowflake object
+  // // create a random number of snowflakes each frame
+  if (snowflakes.length < 300) {
+    for (let i = 0; i < 1; i++) {
+      snowflakes.push(new snowflake()); // append snowflake object
+    }
   }
 
-  // loop through snowflakes with a for..of loop
+  // // loop through snowflakes with a for..of loop
   for (let flake of snowflakes) {
     flake.update(t); // update snowflake position
     flake.display(); // draw snowflake
