@@ -3,7 +3,7 @@ let c2;
 let c3;
 let counter = 0;
 function setup() {
-  createCanvas(480, 320);
+  createCanvas(windowWidth, windowHeight);
   c1 = new Circle(width / 2, height / 2, 100, 75);
   c2 = new Circle(width / 2, height / 2, 150, 100);
   c3 = new Circle(width / 2, height / 2, 175, 125);
