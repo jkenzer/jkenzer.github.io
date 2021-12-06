@@ -1,4 +1,5 @@
 fetch("/sketchbook/sketches.json")
+  // fetch("http://127.0.0.1:5500/sketches.json")
   .then((response) => response.json())
   .then((data) => createTable(data));
 
@@ -19,10 +20,14 @@ function createTable(sketches) {
       {
         id: "createdDate",
         name: "Created Date",
+        formatter: (cell) =>
+          `${new Intl.DateTimeFormat("en-US").format(new Date(cell))}`,
       },
       {
         name: "Last Modified Date",
         id: "lastModifiedDate",
+        formatter: (cell) =>
+          `${new Intl.DateTimeFormat("en-US").format(new Date(cell))}`,
       },
     ],
     search: true,
