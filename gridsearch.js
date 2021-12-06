@@ -1,4 +1,4 @@
-fetch("http://127.0.0.1:5500/sketches.json")
+fetch("/sketchbook/sketches.json")
   .then((response) => response.json())
   .then((data) => createTable(data));
 
