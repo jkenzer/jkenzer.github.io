@@ -21,7 +21,11 @@ function getDirectories(path) {
 
 const directories = getDirectories(".");
 
-const data = JSON.stringify(directories);
+const sorted_directories = directories.sort(
+  (a, b) => b.lastModifiedDate - a.lastModifiedDate
+);
+
+const data = JSON.stringify(sorted_directories);
 fs.writeFile(outputName, data, (err) => {
   if (err) {
     throw err;
