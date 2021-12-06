@@ -1,11 +1,13 @@
 # p5.js Sketchbook
-Using the p5.js library with JavaScript to create interesting visuals. Still very early in the learning stage.
 
-## Sub learning - Jekyll
-Also learning all about github pages and Jekyll
+Using the p5.js library with JavaScript to create interesting visuals. I output many of them to SVG to plot on my pen plotter.
 
-## Use Live Server for local dev
-> npm install -g live-server
+## Index Page
 
-To run, go to root directory:
-> live-server --open=dev.html
+### GridJS
+
+Using (GridJS)[https://gridjs.io/] to display a listing of the sketches in a sortable and searchable fashion
+
+### Node
+
+Using node to generate a json file that is used on the index file. After adding a new sketch, generate a new json file by running `node generate-json.js`
