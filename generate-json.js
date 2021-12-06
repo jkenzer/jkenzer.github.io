@@ -11,7 +11,7 @@ function getDirectories(path) {
       dirs.push({
         sketch: file,
         name: file,
-        createdDate: stat.ctime,
+        createdDate: stat.birthtime,
         lastModifiedDate: stat.mtime,
       });
     }
