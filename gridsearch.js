@@ -34,7 +34,7 @@ function createTable(sketches) {
         name: "Code",
         formatter: (_, row) =>
           gridjs.html(
-            `<a class='capitalize' href='https://github.com/jkenzer/sketchbook/${row.cells[0].data}/'>Code</a>`
+            `<a class='capitalize' href='https://github.com/jkenzer/sketchbook/tree/master/${row.cells[0].data}/'>Code</a>`
           ),
       },
     ],
