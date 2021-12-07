@@ -13,6 +13,7 @@ function getDirectories(path) {
         name: file,
         createdDate: stat.birthtime,
         lastModifiedDate: stat.mtime,
+        code: file,
       });
     }
   });

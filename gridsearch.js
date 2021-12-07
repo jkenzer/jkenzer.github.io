@@ -29,6 +29,14 @@ function createTable(sketches) {
         formatter: (cell) =>
           `${new Intl.DateTimeFormat("en-US").format(new Date(cell))}`,
       },
+      {
+        id: "code",
+        name: "Code",
+        formatter: (_, row) =>
+          gridjs.html(
+            `<a class='capitalize' href='https://github.com/jkenzer/sketchbook/${row.cells[0].data}/'>Code</a>`
+          ),
+      },
     ],
     search: true,
     data: sketches,
