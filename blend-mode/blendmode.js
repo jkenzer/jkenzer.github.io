@@ -3,7 +3,6 @@ var yPos = 15;
 
 function setup() {
   let canvas = createCanvas(600, 600);
-  canvas.parent("sketch");
   background(255, 235, 0);
   noLoop();
 }

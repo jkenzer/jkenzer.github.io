@@ -6,7 +6,6 @@ var strokeWeightInt = 30;
 
 function setup() {
   let canvas = createCanvas(630, 600);
-  canvas.parent("sketch");
   blendModes = [
     BLEND,
     ADD,
@@ -19,8 +18,8 @@ function setup() {
     HARD_LIGHT,
     SOFT_LIGHT,
     DODGE,
-    BURN
-  ]
+    BURN,
+  ];
   background(255, 235, 0);
   noLoop();
 }
@@ -58,7 +57,7 @@ function drawHatch() {
 }
 
 function handleonchange(option, toChange) {
-  console.log('here');
+  console.log("here");
   if (toChange == "ODD") {
     blendModeIndexODD = option.value;
   } else {

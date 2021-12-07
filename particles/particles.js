@@ -3,7 +3,6 @@ const particles = [];
 
 function setup() {
   let canvas = createCanvas(740, 500);
-  canvas.parent("sketch");
   const particlesLength = Math.floor(width / 10);
 
   for (let i = 0; i < particlesLength; i++) {
@@ -18,7 +17,7 @@ function draw() {
     p.draw();
     p.checkParticles(particles);
     // p.checkParticles(particles.slice(index));
-  })
+  });
   // })
 }
 
@@ -33,7 +32,7 @@ class Particle {
 
   draw() {
     noStroke();
-    fill('rgba(255,255,255,0.5)');
+    fill("rgba(255,255,255,0.5)");
     if (this.numConnections > 0) {
       this.size = this.numConnections * 5;
     } else {
@@ -57,10 +56,10 @@ class Particle {
   }
 
   checkParticles(particles) {
-    particles.forEach(particle => {
+    particles.forEach((particle) => {
       const d = dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
       if (d < 70) {
-        stroke('rgba(255,255,255,0.5)');
+        stroke("rgba(255,255,255,0.5)");
         line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
         this.numConnections += 1;
         particle.numConnections += 1;
