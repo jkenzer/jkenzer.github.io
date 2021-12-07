@@ -10,4 +10,7 @@ Using (GridJS)[https://gridjs.io/] to display a listing of the sketches in a sor
 
 ### Node
 
-Using node to generate a json file that is used on the index file. After adding a new sketch, generate a new json file by running `node generate-json.js`
+- new-project.js - use with one argument as the directory name. Creates the directory and adds index.html and sketch.js from the \_templates directory.
+- generate-json.js - Generate a json file that is used on the index file. After adding a new sketch, generate a new json file by running `node generate-json.js`. Ignores \_libraries and \_templates
+
+### Live Server
