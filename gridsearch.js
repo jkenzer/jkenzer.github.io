@@ -1,4 +1,4 @@
-fetch("/sketchbook/sketches.json")
+fetch("/sketches.json")
   // fetch("http://127.0.0.1:5500/sketches.json")
   .then((response) => response.json())
   .then((data) => createTable(data));
@@ -12,7 +12,7 @@ function createTable(sketches) {
         name: "Sketch",
         formatter: (_, row) =>
           gridjs.html(
-            `<a class='capitalize' href='/sketchbook/${
+            `<a class='capitalize' href='/${
               row.cells[0].data
             }/'>${row.cells[0].data.replace("-", " ")}</a>`
           ),
@@ -34,7 +34,7 @@ function createTable(sketches) {
         name: "Code",
         formatter: (_, row) =>
           gridjs.html(
-            `<a class='capitalize' href='https://github.com/jkenzer/sketchbook/tree/master/${row.cells[0].data}/'>Code</a>`
+            `<a class='capitalize' href='https://github.com/jkenzer/tree/master/${row.cells[0].data}/'>Code</a>`
           ),
       },
     ],
