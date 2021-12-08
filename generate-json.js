@@ -6,13 +6,23 @@ function getDirectories(path) {
   let dirs = [];
   const allReads = fs.readdirSync(path);
   allReads.forEach((file) => {
-    let stat = fs.statSync(path + "/" + file);
+    const stat = fs.statSync(path + "/" + file);
     if (stat.isDirectory() && file.charAt(0) != "." && file.charAt(0) != "_") {
+      const dirContents = fs.readdirSync(`${path}/${file}`);
+      let newestFile = 0;
+      let newestDate = "";
+      dirContents.forEach((innerFile) => {
+        const innerStat = fs.statSync(`${path}/${file}/${innerFile}`);
+        if (innerStat.mtimeMs > newestFile) {
+          newestFile = innerStat.mtimeMs;
+          newestDate = innerStat.mtime;
+        }
+      });
       dirs.push({
         sketch: file,
         name: file,
         createdDate: stat.birthtime,
-        lastModifiedDate: stat.mtime,
+        lastModifiedDate: newestDate,
         code: file,
       });
     }

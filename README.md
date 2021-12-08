@@ -19,4 +19,4 @@ live-server --port=[Num]
 
 ## To do
 
-- [ ] Last modified date on homepage is useless. Needs to be the last modified date of the files in the directory
+- [x] Last modified date on homepage is useless. Needs to be the last modified date of the files in the directory
