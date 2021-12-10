@@ -8,7 +8,6 @@ function setup() {
   textFont("Inconsolata");
 
   bottomRow = height / 2 - 100;
-  console.log(bottomRow);
   if (bottomRow - 150 < 0) {
     bottomRow = 175;
   }
@@ -25,6 +24,7 @@ function setup() {
   dots.hours.tens = [new Dot(start, bottomRow - 50), new Dot(start, bottomRow)];
   start += placeSpace;
   dots.hours.ones = [
+    new Dot(start, bottomRow - 150),
     new Dot(start, bottomRow - 100),
     new Dot(start, bottomRow - 50),
     new Dot(start, bottomRow),
@@ -114,7 +114,6 @@ function setBinDots(place, time) {
   let padOnes = 4;
   if (place == "hours") {
     padTens = 2;
-    padOnes = 3;
   }
   let tensBin = parseInt(tens).toString(2).padStart(padTens, 0);
   let onesBin = parseInt(ones).toString(2).padStart(padOnes, 0);
