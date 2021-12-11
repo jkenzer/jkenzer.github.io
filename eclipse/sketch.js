@@ -13,8 +13,16 @@ function draw() {
   const r = 250;
   const firstCenter = width / 2 - r / 2;
 
-  drawCircleWithHatches(firstCenter, height / 2, r, 325, 7);
+  drawCircleWithHatches(firstCenter, height / 2, r, 500, 8);
+  // 240 and 120 are magic numbers
   arc(firstCenter + r, height / 2, r * 2 + 25, r * 2, 240, 120);
+
+  // -58 and 62 are magic numbers
+  for (let a = -60; a < 62; a += 3) {
+    let x = r * cos(a) + firstCenter;
+    let y = r * sin(a) + height / 2;
+    line(x + 3, y, x + 25, y + 10);
+  }
 }
 
 function drawCircleWithHatches(x, y, r, ha, s) {
