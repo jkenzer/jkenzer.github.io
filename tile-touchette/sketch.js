@@ -1,19 +1,29 @@
-let tileWidth = 100;
+const tileWidth = 40;
+const SPACING = 8;
+let tilesX;
+let tilesY;
 
 function setup() {
-  createCanvas(820, 820);
+  createCanvas(820, 600);
   angleMode(DEGREES);
   rectMode(CENTER);
   noLoop();
   noFill();
   strokeWeight(1);
   stroke("black");
+  tilesX = Math.floor(width / (tileWidth + SPACING));
+  tilesY = Math.floor(height / (tileWidth + SPACING));
 }
 
 function draw() {
-  for (let x = 5; x < width + 15; x += 105) {
-    for (let y = 5; y < height + 15; y += 105) {
-      drawTile(x, y, Math.random() < 0.5 ? 0 : 90);
+  translate(SPACING, SPACING);
+  for (let x = 0; x < tilesX; x += 1) {
+    for (let y = 0; y < tilesY; y += 1) {
+      drawTile(
+        x * (tileWidth + SPACING),
+        y * (tileWidth + SPACING),
+        Math.random() < 0.5 ? 0 : 90
+      );
     }
   }
 }
@@ -22,7 +32,7 @@ function drawTile(x, y, a) {
   push();
   translate(x + tileWidth / 2, y + tileWidth / 2);
   rotate(a);
-  square(0, 0, 100);
+  square(0, 0, tileWidth);
   arc(
     (-1 * tileWidth) / 2,
     (-1 * tileWidth) / 2,
