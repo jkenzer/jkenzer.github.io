@@ -1,15 +1,15 @@
-const tileWidth = 40;
+const tileWidth = 55;
 const SPACING = 8;
 let tilesX;
 let tilesY;
 
 function setup() {
-  createCanvas(820, 600);
+  createCanvas(96 * 11, 96 * 14);
   angleMode(DEGREES);
   rectMode(CENTER);
   noLoop();
   noFill();
-  strokeWeight(1);
+  strokeWeight(2);
   stroke("black");
   tilesX = Math.floor(width / (tileWidth + SPACING));
   tilesY = Math.floor(height / (tileWidth + SPACING));
@@ -32,7 +32,9 @@ function drawTile(x, y, a) {
   push();
   translate(x + tileWidth / 2, y + tileWidth / 2);
   rotate(a);
+  strokeWeight(2);
   square(0, 0, tileWidth);
+  strokeWeight(3);
   arc(
     (-1 * tileWidth) / 2,
     (-1 * tileWidth) / 2,
