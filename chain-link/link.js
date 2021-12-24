@@ -6,6 +6,9 @@ class Link {
     this.s = s;
   }
 
+  update(a) {
+    this.a += a;
+  }
   draw() {
     push();
     translate(this.x, this.y);
