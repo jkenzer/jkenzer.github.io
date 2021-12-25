@@ -13,7 +13,7 @@ class Link {
     push();
     translate(this.x, this.y);
     rotate(this.a);
-    const radius = this.s / 4;
+    const radius = this.s / 2;
     const spacing = radius / 12;
     for (let index = this.s - radius; index < this.s; index += spacing) {
       rect(0, 0, index / 2, index, radius, radius, radius, radius);
