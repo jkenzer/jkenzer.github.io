@@ -4,11 +4,18 @@ class Line {
     this.y = y;
   }
 
-  draw() {
+  draw(scale = 1) {
     push();
-    // translate(this.x, this.y);
-    // circle(0, 0, 3);
-    bezier(-150, 0, -125, -120, 125, 120, 150, 0);
+    bezier(
+      -150 * scale,
+      0 * scale,
+      -125 * scale,
+      -120 * scale,
+      125 * scale,
+      120 * scale,
+      150 * scale,
+      0 * scale
+    );
     pop();
   }
 }
