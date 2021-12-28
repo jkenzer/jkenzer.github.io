@@ -11,7 +11,7 @@ let y = [];
 let freeze = true;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(96 * 11, 96 * 8.5, SVG);
 
   // init shape
   centerX = width / 2;
@@ -66,4 +66,7 @@ function mousePressed() {
   } else {
     loop();
   }
+}
+function keyReleased() {
+  if (key == "s" || key == "S") save("evolve.svg");
 }
