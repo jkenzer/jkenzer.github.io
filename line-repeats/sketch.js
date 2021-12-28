@@ -3,7 +3,7 @@ let count;
 let rotation;
 let saveBtn;
 function setup() {
-  createCanvas(810, 800, SVG);
+  createCanvas(96 * 5, 96 * 5, SVG);
   strokeWeight(1);
   noFill();
   noLoop();
@@ -11,17 +11,18 @@ function setup() {
   scaleSlider = createSlider(0.005, 1, 0.005, 0.005);
   count = createSlider(1, 100, 1, 1);
   rotation = createSlider(-4, 4, 2, 0.1);
-  scaleSlider.input(redraw);
-  count.input(redraw);
-  rotation.input(redraw);
+  scaleSlider.input(clearRedraw);
+  count.input(clearRedraw);
+  rotation.input(clearRedraw);
   saveBtn = createButton("Save SVG");
   saveBtn.mousePressed(saveSVG);
 }
 
 function draw() {
-  background("white");
+  console.log("here");
   let scale = 1;
   for (let index = 0; index < count.value(); index++) {
+    console.log(index);
     push();
     translate(width / 2, height / 2);
     rotate(index * rotation.value());
@@ -35,4 +36,8 @@ function draw() {
 
 function saveSVG() {
   save("line-repeats.svg");
+}
+function clearRedraw() {
+  clear();
+  redraw();
 }
