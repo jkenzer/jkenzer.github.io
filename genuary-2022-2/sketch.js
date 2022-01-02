@@ -5,19 +5,17 @@ function preload() {
 function setup() {
   createCanvas(800, 800);
   noLoop();
-  pixelDensity(1);
+  image(img, 0, 0);
 
-  for (let x = 0; x < img.width; x++) {
-    for (let y = 0; y < img.height; y++) {
-      r = img.get(x, y);
-      if (r[0] < 255 / 2) {
-        circle(x, y, 1);
-      }
+  loadPixels();
+  for (var i = 0; i < pixels.length; i++) {
+    if (pixels[i] > 255 / 2 + 20) {
+      pixels[i] = 255;
+    } else {
+      pixels[i] = 0;
     }
   }
+  updatePixels();
 }
 
-function draw() {
-  // image(img, 0, 0);
-  // console.log(pixels.length);
-}
+function draw() {}
