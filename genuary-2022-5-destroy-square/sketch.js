@@ -2,6 +2,8 @@ function setup() {
   createCanvas(400, 400);
   noLoop();
   noFill();
+  strokeWeight(1);
+  angleMode(DEGREES);
   // rectMode(CENTER);
 }
 

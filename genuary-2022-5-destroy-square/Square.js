@@ -4,81 +4,55 @@ class Square {
     this.y = y;
     this.size = size;
     this.res = res;
-    this.flowField = [];
-    this.cols = floor(size / res);
-    this.rows = floor(size / res);
-    this.upperLeft = createVector(-1 * (size / 2), -1 * (size / 2));
+    this.points = [];
+    this.breakPointRadius = 1;
+    this.mult = 0.5;
+    this.numSteps = this.size + this.size / 2;
+    let density = 20;
 
-    // this should be dynamic
-    this.steps = 250;
-    this.stepSize = 1.5;
-
-    // move to function to create a random number of break points
-    // this.breakPoint = createVector(
-    //   random(-1 * (size / 2), size / 2),
-    //   random(-1 * (size / 2), size / 2)
-    // );
     this.breakPoint = createVector(random(size), random(size));
+    for (let angle = 0; angle < 360; angle += 60) {
+      let x = cos(angle) * this.breakPointRadius;
+      let y = sin(angle) * this.breakPointRadius;
+      let p = createVector(x, y);
+
+      p.add(this.breakPoint);
+      this.points.push(p);
+    }
   }
 
   draw() {
     push();
     translate(this.x, this.y);
     rect(0, 0, this.size, this.size);
-    circle(this.breakPoint.x, this.breakPoint.y, 3);
-
-    for (let x = 0; x < this.rows; x++) {
-      for (let y = 0; y < this.cols; y++) {
-        let index = x + y * this.cols;
-        let angle = TWO_PI / 5;
-        // let angle = TWO_PI / random(1, 10);
-        let v = p5.Vector.fromAngle(angle);
-        v.setMag(1);
-        this.flowField[index] = v;
-
-        stroke(0, 50);
-        push();
-        // translate(this.upperLeft.x, this.upperLeft.y);
-        translate(x * this.res, y * this.res);
-        line(x, y, x + this.res, y);
-        line(x, y, x, y + this.res);
-        rotate(v.heading());
-        strokeWeight(1);
-        line(0, 0, this.res, 0);
-        pop();
+    // circle(this.breakPoint.x, this.breakPoint.y, this.breakPointRadius);
+    for (let i = 0; i < this.points.length; i++) {
+      for (let step = 0; step < this.numSteps; step++) {
+        let angle;
+        const p = this.points[i];
+        if (p.x < this.breakPoint.x && p.y < this.breakPoint.y) {
+          angle = map(noise(p.x * this.mult, p.y * this.mult), 0, 1, 180, 270);
+        } else if (p.x > this.breakPoint.x && p.y < this.breakPoint.y) {
+          angle = map(noise(p.x * this.mult, p.y * this.mult), 0, 1, 270, 360);
+        } else if (p.x < this.breakPoint.x && p.y > this.breakPoint.y) {
+          angle = map(noise(p.x * this.mult, p.y * this.mult), 0, 1, 90, 180);
+        } else {
+          angle = map(noise(p.x * this.mult, p.y * this.mult), 0, 1, 0, 90);
+        }
+        // let angle = p.heading();
+        this.points[i].add(createVector(cos(angle), sin(angle)));
+        if (
+          this.points[i].x > this.size ||
+          this.points[i].y > this.size ||
+          this.points[i].x < 0 ||
+          this.points[i].y < 0
+        ) {
+          console.log(this.points[i].x, this.points[i].y, "outside");
+          break;
+        }
+        circle(this.points[i].x, this.points[i].y, 1);
+        // }
       }
     }
-    console.log(this.flowField);
-    push();
-    // translate(this.upperLeft.x, this.upperLeft.y);
-    this.walkpoint(this.breakPoint);
-    pop();
-    pop();
-  }
-
-  walkpoint(pt) {
-    console.log(pt);
-    stroke("black");
-    beginShape();
-    vertex(pt.x, pt.y);
-    for (let step = 0; step < this.steps; step++) {
-      if (pt.x < 0 || pt.x > this.size || pt.y < 0 || pt.y > this.size) {
-        break;
-      }
-      let x = floor(pt.x / this.res);
-      let y = floor(pt.y / this.res);
-      let index = x + y * this.cols;
-      console.log("index", index);
-      let force = this.flowField[index];
-      if (!force) {
-        console.log("break");
-        break;
-      }
-      vertex(pt.x, pt.y);
-      force.mult(this.stepSize);
-      pt.add(force);
-    }
-    vertex(pt.x, pt.y);
-    endShape();
   }
 }
