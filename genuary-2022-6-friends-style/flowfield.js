@@ -14,6 +14,8 @@ class FlowField {
     this.inc = 0.02;
     this.zoff = 0;
   }
+
+  // This sets all the directions in the flow field
   update() {
     let yoff = 0;
     for (let y = 0; y < this.rows; y++) {
@@ -30,6 +32,8 @@ class FlowField {
       yoff += this.inc;
     }
   }
+
+  // This is just for debugging - visualizing the flow field
   display() {
     for (let y = 0; y < this.rows; y++) {
       for (let x = 0; x < this.cols; x++) {

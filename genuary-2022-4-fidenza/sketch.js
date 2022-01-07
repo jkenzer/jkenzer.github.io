@@ -1,5 +1,5 @@
 let inc = 1.5;
-let scl = 20;
+let scl = 30;
 let stepSize = 1;
 let cols, rows;
 let steps = 3000;
@@ -78,6 +78,6 @@ function walkpoint(pt) {
   endShape();
 }
 
-// function mousePressed() {
-//   save("fidenza.svg");
-// }
+function mousePressed() {
+  save("fidenza.svg");
+}

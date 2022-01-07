@@ -11,7 +11,7 @@ particles = [];
 let debug = false;
 
 function setup() {
-  createCanvas(960, 672);
+  createCanvas(500, 500);
   let res = 8;
   flowfield = new FlowField(res);
   flowfield.update();

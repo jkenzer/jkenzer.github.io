@@ -6,7 +6,7 @@ let angle = 0.0;
 let angleIncrement;
 
 function setup() {
-  createCanvas(96 * 12, 96 * 7);
+  createCanvas(96 * 10, 96 * 7, SVG);
   noLoop();
   noFill();
   angleIncrement = TWO_PI / 30;
@@ -69,4 +69,7 @@ function draw() {
   // }
   // line(0, height, width, 0);
   // line(0, 0, width, height);
+}
+function mousePressed() {
+  save("lewitt.svg");
 }

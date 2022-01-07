@@ -9,19 +9,12 @@ class Particle {
   constructor(start, maxspeed) {
     this.finished = false;
     this.history = [];
-    this.maxSpeed = maxspeed;
     this.pos = start;
-    this.vel = createVector(0, 0);
-    this.acc = createVector(0, 0);
-    this.previousPos = this.pos.copy();
   }
 
   update() {
     this.history.push(this.pos.copy());
     this.pos.add(this.vel);
-  }
-  applyForce(force) {
-    this.acc.add(force);
   }
   show() {
     stroke(0);

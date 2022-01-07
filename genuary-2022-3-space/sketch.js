@@ -1,9 +1,10 @@
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(96 * 6, 96 * 6, SVG);
   noFill();
   stroke("black");
   strokeWeight(1);
   angleMode(DEGREES);
+  noLoop();
 }
 
 function draw() {
@@ -30,4 +31,7 @@ function draw() {
   arc(0, 0, 350, 100, 339, 200);
   arc(0, 0, 360, 110, 335, 203);
   arc(0, 0, 370, 120, 332, 206);
+}
+function mousePressed() {
+  save("space.svg");
 }
