@@ -1,25 +1,42 @@
+// Daniel Shiffman
+// http://youtube.com/thecodingtrain
+// http://codingtra.in
+//
+// Coding Challenge #24: Perlin Noise Flow  Field
+// https://youtu.be/BjoM9oKOAKY
+
+let flowfield;
+particles = [];
+
+let debug = false;
+
 function setup() {
-  createCanvas(400, 400);
-  noLoop();
-  angleMode(DEGREES);
+  createCanvas(960, 672);
+  let res = 8;
+  flowfield = new FlowField(res);
+  flowfield.update();
+
+  particles = [];
+  for (let i = 0; i < 1000; i++) {
+    let start = createVector(random(width), random(height));
+    particles.push(new Particle(start, 5));
+  }
 }
 
 function draw() {
-  let p = createVector(0, 100);
+  background(255);
 
-  translate(width / 2, height / 2);
-  // p.setHeading(TWO_PI);
-  // circle(p.x, p.y, 3);
-  // line(0, 0, p.x, p.y);
-  // console.log(p.heading());
-  // arc(0, 0, 200, 200, 0, 15);
+  flowfield.update();
 
-  let points = [];
-  let radius = 20;
-  for (let i = 0; i < 360; i += 15) {
-    let np = createVector(0, 1);
-    np.setHeading(i);
-    np.mult(radius);
-    point(np.x, np.y);
-  }
+  if (debug) flowfield.display();
+
+  particles.forEach((p) => {
+    p.edges();
+    p.check(particles);
+    if (!p.finished) {
+      p.follow(flowfield);
+      p.update();
+    }
+    p.show();
+  });
 }
