@@ -11,7 +11,7 @@ class Square {
     let density = 20;
 
     this.breakPoint = createVector(random(size), random(size));
-    for (let angle = 0; angle < 360; angle += 15) {
+    for (let angle = 0; angle < 360; angle += 45) {
       let p = createVector(0, 1);
       p.setHeading(angle);
       p.mult(this.breakPointRadius);
