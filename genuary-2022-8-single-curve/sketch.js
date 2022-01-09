@@ -1,4 +1,4 @@
-let radius = 300;
+let radius = 125;
 function setup() {
   createCanvas(10 * 96, 7 * 96);
   noLoop();
@@ -7,12 +7,15 @@ function setup() {
 }
 
 function draw() {
-  translate(width / 2, height / 2);
-  let counter = 1.5;
-  for (let a = 180; a < 540; a += 22) {
-    let x = cos(a) * ((radius * counter) / 10);
-    let y = sin(a) * radius;
-    new Mickey(x, y, 100 / (a * counter), 1);
+  push();
+  translate(width / 2 + 100, -100);
+  let counter = 50;
+  for (let a = -840; a < 840; a += 3) {
+    let x = cos(a) * radius;
+    let y = sin(a) * radius + counter;
+    // new Mickey(x, y, 100 / (a * counter), 1);
+    line(x, y, x - 2 * counter, y + counter);
     counter++;
   }
+  pop();
 }
