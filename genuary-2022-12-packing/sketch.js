@@ -1,38 +1,19 @@
-// need to adjust radius automatically
-
-let r = 20;
-let allCircles = [];
-let numCircles = 100;
+let cp;
+let x = 30;
+let y = 10;
+let myWidth = 200;
+let myHeight = 200;
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 600);
   noLoop();
   noFill();
-  let c = createVector(random(width), random(height));
-  allCircles.push(c);
-  while (allCircles.length < 35) {
-    c = createVector(random(r, width - r), random(r, height - r));
-    checkDistance(c);
-  }
+  cp = new CirclePack(x, y, myWidth, myHeight);
+  cp2 = new CirclePack(x + 250, y + 250, myWidth, myHeight);
 }
 
 function draw() {
-  allCircles.forEach((c) => {
-    circle(c.x, c.y, r * 2);
-  });
-}
-
-function checkDistance(currentC) {
-  let overlapping = false;
-  for (let i = 0; i < allCircles.length; i++) {
-    const c = allCircles[i];
-    overlapping = false;
-    if (dist(currentC.x, currentC.y, c.x, c.y) < r * 2 + 2) {
-      console.log(dist(currentC.x, currentC.y, c.x, c.y), r * 2);
-      overlapping = true;
-      break;
-    }
-  }
-  if (!overlapping) {
-    allCircles.push(currentC);
-  }
+  rect(x, y, myWidth, myHeight);
+  rect(x + 250, y + 250, myWidth, myHeight);
+  cp.draw();
+  cp2.draw();
 }
