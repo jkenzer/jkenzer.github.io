@@ -1,7 +1,7 @@
 class CirclePack {
   constructor(x, y, myWidth, myHeight, seedCircles) {
     this.minR = 1;
-    this.maxR = 25;
+    this.maxR = 20;
     this.allCircles = seedCircles;
     this.numCircles = 300000;
     let c;
@@ -12,6 +12,7 @@ class CirclePack {
         x: random(this.minR + x, myWidth + x - this.minR),
         y: random(this.minR + y, myHeight + y - this.minR),
         r: this.minR,
+        fill: false,
       };
       if (this.isValid(c)) {
         while (this.isValid(c) && c.r < this.maxR) {
@@ -28,10 +29,15 @@ class CirclePack {
   }
   draw() {
     this.allCircles.forEach((c) => {
-      if (c.r >= this.maxR * 0.5) {
-        strokeWeight(0);
+      // if (c.r >= this.maxR * 0.5) {
+      //   strokeWeight(0);
+      // } else {
+      //   strokeWeight(1);
+      // }
+      if (c.fill) {
+        fill(155);
       } else {
-        strokeWeight(1);
+        noFill();
       }
       circle(c.x, c.y, c.r * 2);
     });
