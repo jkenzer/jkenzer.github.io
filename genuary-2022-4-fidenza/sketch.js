@@ -1,5 +1,5 @@
-let inc = 1.5;
-let scl = 30;
+let inc = 0.5;
+let scl = 70;
 let stepSize = 1;
 let cols, rows;
 let steps = 3000;
@@ -8,7 +8,7 @@ let flowfield;
 let points = [];
 
 function setup() {
-  createCanvas(576, 576, SVG);
+  createCanvas(8 * 96, 10 * 96, SVG);
   cols = floor(width / scl);
   rows = floor(height / scl);
 
@@ -18,7 +18,7 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  // background(255);
   let yoff = 0;
   for (let y = 0; y < rows; y++) {
     let xoff = 0;
@@ -36,7 +36,7 @@ function draw() {
       push();
       translate(x * scl, y * scl);
       rotate(v.heading());
-      strokeWeight(1);
+      strokeWeight(2);
       line(0, 0, scl, 0);
       pop();
     }
