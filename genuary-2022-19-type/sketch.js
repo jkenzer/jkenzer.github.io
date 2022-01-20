@@ -1,40 +1,45 @@
-let font;
-let points;
-let bounds;
-function preload() {
-  font = loadFont("Anton-Regular.ttf");
-}
+let tcs = [];
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(displayWidth, displayHeight);
   stroke(0);
   noLoop();
-  fill("orange");
-
-  points = font.textToPoints("J", 0, 0, 200, {
-    sampleFactor: 5,
-    simplifyThreshold: 0,
-  });
-  bounds = font.textBounds("J", 0, 0, 200);
+  let r = 50;
+  let spacing = 25;
+  let strings = [" CIRCLES AND CIRCLES ", "TYPOOGRAPHY", " ALL THE WORDS "];
+  for (let x = r; x < width; x += r * 2 + spacing) {
+    for (let y = r; y < height; y += r * 2 + spacing) {
+      tcs.push(new TextCircle(x, y, random(strings)));
+    }
+  }
 }
 
 function draw() {
-  background(255);
-  beginShape();
-  translate(bounds.x + bounds.w, bounds.y + bounds.h + bounds.h);
-
-  for (let i = 0; i < points.length; i++) {
-    let p = points[i];
-    // vertex(
-    //   (p.x * width) / bounds.w +
-    //     (sin((20 * p.y) / bounds.h + millis() / 1000) * width) / 30,
-    //   (p.y * height) / bounds.h
-    // );
-    // console.log(p.x, bounds.w + bounds.x);
-    if (p.x > bounds.w) {
-      vertex(p.x + 300 / p.y, p.y);
-    } else {
-      vertex(p.x, p.y);
-    }
+  tcs.forEach((tc) => {
+    tc.draw();
+  });
+}
+class TextCircle {
+  constructor(x, y, str) {
+    this.x = x;
+    this.y = y;
+    this.str = str;
+    this.r = 50;
   }
-  endShape(CLOSE);
+
+  draw() {
+    textSize(10);
+    push();
+    translate(this.x, this.y);
+    let stringIndex = 0;
+    let a = TWO_PI / this.str.length;
+    let r2 = this.r * random(0.4, 1);
+    for (let i = PI; i < TWO_PI + PI; i += a) {
+      let x = cos(i) * this.r;
+      let y = sin(i) * r2;
+      let cLettter = this.str[stringIndex];
+      text(cLettter, x, y);
+      stringIndex++;
+    }
+    pop();
+  }
 }
