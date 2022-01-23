@@ -1,10 +1,10 @@
 const tileWidth = 55;
-const SPACING = 8;
+const SPACING = 12;
 let tilesX;
 let tilesY;
 
 function setup() {
-  createCanvas(96 * 11, 96 * 14);
+  createCanvas(96 * 12, 96 * 9, SVG);
   angleMode(DEGREES);
   rectMode(CENTER);
   noLoop();
@@ -33,8 +33,8 @@ function drawTile(x, y, a) {
   translate(x + tileWidth / 2, y + tileWidth / 2);
   rotate(a);
   strokeWeight(2);
-  square(0, 0, tileWidth);
-  strokeWeight(3);
+  square(0, 0, tileWidth + 2);
+  strokeWeight(4);
   arc(
     (-1 * tileWidth) / 2,
     (-1 * tileWidth) / 2,
@@ -54,4 +54,8 @@ function drawTile(x, y, a) {
   arc(tileWidth / 2, tileWidth / 2, tileWidth - 15, tileWidth - 15, 180, 270);
   arc(tileWidth / 2, tileWidth / 2, tileWidth + 15, tileWidth + 15, 180, 270);
   pop();
+}
+
+function mouseClicked() {
+  save("layer2.svg");
 }
