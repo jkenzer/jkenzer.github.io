@@ -1,0 +1,82 @@
+{
+  "blank": {
+    "adjacent": {
+      "left": [
+        "blank",
+        "oneLineVertical"
+      ],
+      "right": [
+        "blank",
+        "oneLineVertical"
+      ],
+      "top": [
+        "blank",
+        "oneLineHorizontal"
+      ],
+      "bottom": [
+        "blank",
+        "oneLineHorizontal"
+      ]
+    }
+  },
+  "oneLineVertical": {
+    "adjacent": {
+      "left": [
+        "blank",
+        "oneLineVertical"
+      ],
+      "right": [
+        "blank",
+        "oneLineVertical"
+      ],
+      "top": [
+        "cross",
+        "oneLineVertical"
+      ],
+      "bottom": [
+        "cross",
+        "oneLineVertical"
+      ]
+    }
+  },
+  "oneLineHorizontal": {
+    "adjacent": {
+      "left": [
+        "cross",
+        "oneLineHorizontal"
+      ],
+      "right": [
+        "cross",
+        "oneLineHorizontal"
+      ],
+      "top": [
+        "blank",
+        "oneLineHorizontal"
+      ],
+      "bottom": [
+        "blank",
+        "oneLineHorizontal"
+      ]
+    }
+  },
+  "cross": {
+    "adjacent": {
+      "left": [
+        "cross",
+        "oneLineHorizontal"
+      ],
+      "right": [
+        "cross",
+        "oneLineHorizontal"
+      ],
+      "top": [
+        "cross",
+        "oneLineVertical"
+      ],
+      "bottom": [
+        "cross",
+        "oneLineVertical"
+      ]
+    }
+  }
+}
