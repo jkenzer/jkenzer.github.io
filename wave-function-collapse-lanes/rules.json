@@ -1,0 +1,194 @@
+{
+  "blank": {
+    "adjacent": {
+      "left": [
+        "blank",
+        "oneLineVertical",
+        "rightUpLeft",
+        "rightDownLeft"
+      ],
+      "right": [
+        "blank",
+        "oneLineVertical",
+        "rightUpRight",
+        "rightDownRight"
+      ],
+      "top": [
+        "blank",
+        "oneLineHorizontal",
+        "rightUpRight",
+        "rightUpLeft"
+      ],
+      "bottom": [
+        "blank",
+        "oneLineHorizontal",
+        "rightDownRight",
+        "rightDownLeft"
+      ]
+    }
+  },
+  "rightUpRight": {
+    "adjacent": {
+      "left": [
+        "blank",
+        "oneLineVertical"
+      ],
+      "right": [
+        "cross",
+        "oneLineHorizontal"
+      ],
+      "top": [
+        "cross",
+        "oneLineVertical"
+      ],
+      "bottom": [
+        "blank",
+        "oneLineHorizontal"
+      ]
+    }
+  },
+  "rightUpLeft": {
+    "adjacent": {
+      "left": [
+        "cross",
+        "oneLineHorizontal"
+      ],
+      "right": [
+        "blank",
+        "oneLineVertical"
+      ],
+      "top": [
+        "cross",
+        "oneLineVertical"
+      ],
+      "bottom": [
+        "blank",
+        "oneLineHorizontal"
+      ]
+    }
+  },
+  "rightDownRight": {
+    "adjacent": {
+      "left": [
+        "blank",
+        "oneLineVertical"
+      ],
+      "right": [
+        "cross",
+        "oneLineHorizontal"
+      ],
+      "top": [
+        "blank",
+        "oneLineHorizontal"
+      ],
+      "bottom": [
+        "cross",
+        "oneLineVertical"
+      ]
+    }
+  },
+  "rightDownLeft": {
+    "adjacent": {
+      "left": [
+        "cross",
+        "oneLineHorizontal"
+      ],
+      "right": [
+        "blank",
+        "oneLineVertical"
+      ],
+      "top": [
+        "blank",
+        "oneLineHorizontal"
+      ],
+      "bottom": [
+        "cross",
+        "oneLineVertical"
+      ]
+    }
+  },
+  "oneLineVertical": {
+    "adjacent": {
+      "left": [
+        "blank",
+        "oneLineVertical",
+        "rightUpLeft",
+        "rightDownLeft"
+      ],
+      "right": [
+        "blank",
+        "oneLineVertical",
+        "rightUpRight",
+        "rightDownRight"
+      ],
+      "top": [
+        "cross",
+        "oneLineVertical",
+        "rightDownRight",
+        "rightDownLeft"
+      ],
+      "bottom": [
+        "cross",
+        "oneLineVertical",
+        "rightUpRight",
+        "rightUpLeft"
+      ]
+    }
+  },
+  "oneLineHorizontal": {
+    "adjacent": {
+      "left": [
+        "cross",
+        "oneLineHorizontal",
+        "rightUpRight",
+        "rightDownRight"
+      ],
+      "right": [
+        "cross",
+        "oneLineHorizontal",
+        "rightUpLeft",
+        "rightDownLeft"
+      ],
+      "top": [
+        "blank",
+        "oneLineHorizontal",
+        "rightUpRight",
+        "rightUpLeft"
+      ],
+      "bottom": [
+        "blank",
+        "oneLineHorizontal",
+        "rightDownRight",
+        "rightDownLeft"
+      ]
+    }
+  },
+  "cross": {
+    "adjacent": {
+      "left": [
+        "cross",
+        "oneLineHorizontal",
+        "rightUpRight",
+        "rightDownRight"
+      ],
+      "right": [
+        "cross",
+        "oneLineHorizontal",
+        "rightUpLeft",
+        "rightDownLeft"
+      ],
+      "top": [
+        "cross",
+        "oneLineVertical",
+        "rightDownLeft",
+        "rightDownRight"
+      ],
+      "bottom": [
+        "cross",
+        "oneLineVertical",
+        "rightUpLeft",
+        "rightUpRight"
+      ]
+    }
+  }
+}
