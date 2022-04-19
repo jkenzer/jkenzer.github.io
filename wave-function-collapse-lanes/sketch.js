@@ -1,5 +1,5 @@
 let rowCount;
-const size = 50;
+const size = 15;
 let offset;
 const tiles = [];
 let rules = {};
@@ -33,8 +33,6 @@ async function setup() {
       index++;
     }
   }
-  // let tile1 = new Tile(10, 10, "cross");
-  // tile1.draw();
 }
 
 function draw() {

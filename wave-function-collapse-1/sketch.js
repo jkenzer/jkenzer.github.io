@@ -1,5 +1,5 @@
 let rowCount;
-const size = 25;
+const size = 15;
 const tiles = [];
 let rules = {};
 let tileTypes = [];
