@@ -7,9 +7,6 @@ let grid = [];
 let tile;
 
 async function setup() {
-  tileTypes = ["blank", "oneLineVertical", "oneLineHorizontal", "cross"];
-  randomSeed("Josh");
-
   tile = new Tile();
   rules = {
     blank: [0, 0, 0, 0],
@@ -17,6 +14,7 @@ async function setup() {
     oneLineHorizontal: [0, 1, 0, 1],
     cross: [1, 1, 1, 1],
   };
+  tileTypes = Object.keys(rules);
 
   createCanvas(600, 600);
   noFill();
@@ -26,7 +24,7 @@ async function setup() {
   for (let index = 0; index < rowCount * rowCount; index++) {
     grid.push({
       collapsed: false,
-      options: ["cross", "oneLineVertical", "oneLineHorizontal", "blank"],
+      options: tileTypes,
     });
   }
 
