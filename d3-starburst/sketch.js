@@ -616,7 +616,7 @@ const data = {
     {
       Id: "a0r3k000006WXhPAAW",
       Grant__r: {
-        Program_Area__c: "5",
+        Program_Area__c: "4",
         Philanthropic_Agenda_Area__c: "Health/Human Services",
         Sub_Program_Area__c: "P",
       },
@@ -755,8 +755,8 @@ function Sunburst(
   return svg.node();
 }
 
-const grantData = getGrantData();
-console.log(grantData);
+const grantData = getGroupedData();
+console.log(JSON.stringify(grantData, undefined, 2));
 
 const chart = Sunburst(grantData, {
   value: (d) => d.size, // size of each node (file); null for internal nodes (folders)
@@ -772,53 +772,48 @@ const chart = Sunburst(grantData, {
   height: svgHeight,
 });
 
-function getGrantData() {
-  const formattedData = {
-    name: `Agenda Areas`,
-    children: [],
+function getGroupedData() {
+  const { rollup } = d3;
+
+  const rollupReducer = (group) => {
+    return d3.sum(group, (d) => d.Grant_Amount__c);
   };
-  const records = data.records;
-  let parents = [];
-  records.forEach((rec) => {
-    const found = parents.findIndex(
-      ({ name }) => name == rec.Grant__r.Philanthropic_Agenda_Area__c
-    );
-    if (found < 0) {
-      parents.push({
-        name: rec.Grant__r.Philanthropic_Agenda_Area__c,
-        // size: rec.Grant_Amount__c,
+
+  const programAreas = rollup(
+    data.records,
+    rollupReducer,
+    (d) => d.Grant__r.Philanthropic_Agenda_Area__c,
+    (d) => d.Grant__r.Program_Area__c,
+    (d) => d.Grant__r.Sub_Program_Area__c
+  );
+  let parent = [];
+  for (const [agendaArea, value] of programAreas) {
+    let children = [];
+    for (const [programArea, value2] of value) {
+      console.log(programArea, value2);
+      let subChildren = [];
+      for (const [subProgramArea, size] of value2) {
+        console.log(subProgramArea + " = " + size);
+        subChildren.push({
+          name: subProgramArea || "Unknown",
+          size,
+        });
+      }
+      children.push({
+        name: programArea || "Unknown",
+        children: subChildren,
       });
     }
-  });
-  parents.forEach((p, i) => {
-    let children = records.filter((r) => {
-      return r.Grant__r.Philanthropic_Agenda_Area__c == p.name;
+    parent.push({
+      name: agendaArea,
+      children,
     });
+  }
 
-    let dupeChildren = children.map((child) => {
-      return {
-        name: child.Grant__r.Program_Area__c || "unknown",
-        size: child.Grant_Amount__c,
-      };
-    });
-    let finalChildren = [];
-    dupeChildren.forEach((dc) => {
-      const found = finalChildren.findIndex(({ name }) => name == dc.name);
-      if (found < 0) {
-        finalChildren.push({
-          name: dc.name,
-          size: dc.size,
-        });
-      } else {
-        finalChildren[found].size = finalChildren[found].size + dc.size;
-      }
-    });
-    // console.log(finalChildren);
-    parents[i].children = finalChildren;
-  });
-  // console.log(parents);
-  formattedData.children = parents;
-  return formattedData;
+  return {
+    name: "Agenda Areas",
+    children: parent,
+  };
 }
 
 function wrap(text, width) {
