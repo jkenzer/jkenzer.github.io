@@ -1,6 +1,7 @@
 const width = window.innerWidth;
 const height = window.innerHeight;
 const margin = { top: 150, right: 150, bottom: 150, left: 150 };
+const formatTipDate = d3.timeFormat("%B %d, %Y");
 
 async function loadData() {
   const text = await (await fetch("./rising-data.csv")).text();
@@ -25,7 +26,7 @@ async function loadData() {
       points = 3;
     }
     return {
-      Date,
+      Date: parseDate(Date),
       Score,
       ...rest,
       homeScore,
@@ -55,10 +56,9 @@ const main = async () => {
       const risingScore = +getScore(d);
       const oppScore = +getScore(d, false);
       const goalDifferential = risingScore - oppScore;
-      // console.log(d);
       return {
-        score: `${d["Home Team"]} ${d.Score} ${d["Away Team"]}`,
-        date: d.Date,
+        score: `${gameNum} ${d["Home Team"]} ${d.Score} ${d["Away Team"]}`,
+        date: formatTipDate(d.Date),
         goalDifferential,
         gameNum,
       };
@@ -66,7 +66,9 @@ const main = async () => {
     return marks;
   };
 
-  const marks = makeMarks(phoenixRising2021Results);
+  const marks = makeMarks(
+    phoenixRising2021Results.sort((a, b) => d3.ascending(a.Date, b.Date))
+  );
 
   const totalDiffByGame = marks.map((d, i) => {
     const gamesToSum = marks.filter((fd, fi) => fi < i);

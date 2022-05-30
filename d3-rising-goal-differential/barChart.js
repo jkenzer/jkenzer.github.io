@@ -57,12 +57,13 @@ function barChart() {
       .attr("width", (d, i) => x(i + 1) - x(i) - 1)
       .on("mouseover", (event, d) => {
         // console.log(d.score);
-        tooltip.text(`${d.date} ${d.score}`);
+        tooltip.text(`${d.date} - ${d.score}`);
         return tooltip.style("visibility", "visible");
       })
-      .on("mousemove", (event) => {
-        let [x, y] = d3.pointer(event);
-        return tooltip.style("top", y + "px").style("left", x + "px");
+      .on("mousemove", (event, d) => {
+        let xPos = x(d.gameNum);
+        let yPos = y(d.goalDifferential);
+        return tooltip.style("top", `${yPos}px`).style("left", `${xPos}px`);
       })
       .on("mouseout", () => {
         return tooltip.style("visibility", "hidden");
