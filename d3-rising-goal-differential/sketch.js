@@ -3,8 +3,8 @@ const height = window.innerHeight;
 const margin = { top: 150, right: 150, bottom: 150, left: 150 };
 
 async function loadData() {
-  const text = await (await fetch("./phoenix-rising-2021-results.csv")).text();
-  const parseDate = d3.utcParse("%m/%d/%y");
+  const text = await (await fetch("./rising-data.csv")).text();
+  const parseDate = d3.timeParse("%Y-%m-%d");
   return d3.csvParse(text, ({ Date, Score, ...rest }) => {
     let homeScore = +Score.split("-")[0];
     let awayScore = +Score.split("-")[1];
@@ -25,7 +25,7 @@ async function loadData() {
       points = 3;
     }
     return {
-      Date: parseDate(Date),
+      Date,
       Score,
       ...rest,
       homeScore,
@@ -55,6 +55,7 @@ const main = async () => {
       const risingScore = +getScore(d);
       const oppScore = +getScore(d, false);
       const goalDifferential = risingScore - oppScore;
+      // console.log(d);
       return {
         score: `${d["Home Team"]} ${d.Score} ${d["Away Team"]}`,
         date: d.Date,

@@ -6,7 +6,7 @@ function barChart() {
   let width;
 
   const my = (selection) => {
-    const maxDiff = d3.max(data.map((d) => d.goalDifferential));
+    const maxDiff = d3.max(data.map((d) => Math.abs(d.goalDifferential)));
 
     const xAxis = (g) =>
       g
@@ -56,12 +56,11 @@ function barChart() {
       .attr("y", (d) => (d.goalDifferential > 0 ? y(d.goalDifferential) : y(0)))
       .attr("width", (d, i) => x(i + 1) - x(i) - 1)
       .on("mouseover", (event, d) => {
-        console.log(d.score);
-        tooltip.text(d.score);
+        // console.log(d.score);
+        tooltip.text(`${d.date} ${d.score}`);
         return tooltip.style("visibility", "visible");
       })
       .on("mousemove", (event) => {
-        console.log(d3.pointer(event));
         let [x, y] = d3.pointer(event);
         return tooltip.style("top", y + "px").style("left", x + "px");
       })
