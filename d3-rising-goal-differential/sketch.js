@@ -2,6 +2,13 @@ const width = window.innerWidth;
 const height = window.innerHeight;
 const margin = { top: 150, right: 150, bottom: 150, left: 150 };
 const formatTipDate = d3.timeFormat("%B %d, %Y");
+let marks;
+let barChartInstance;
+let svg;
+
+// TODO: Tooltips aren't working
+// TODO: culmative isn't working
+// TODO: count of games isn't working (switch to date?)
 
 async function loadData() {
   const text = await (await fetch("./rising-data.csv")).text();
@@ -59,6 +66,7 @@ const main = async () => {
       return {
         score: `${gameNum} ${d["Home Team"]} ${d.Score} ${d["Away Team"]}`,
         date: formatTipDate(d.Date),
+        Date: d.Date,
         goalDifferential,
         gameNum,
       };
@@ -66,7 +74,7 @@ const main = async () => {
     return marks;
   };
 
-  const marks = makeMarks(
+  marks = makeMarks(
     phoenixRising2021Results.sort((a, b) => d3.ascending(a.Date, b.Date))
   );
 
@@ -83,7 +91,7 @@ const main = async () => {
     };
   });
 
-  const svg = d3
+  svg = d3
     .select("body")
     .append("svg")
     .attr("width", width)
@@ -91,13 +99,25 @@ const main = async () => {
 
   totalDiffByGame.unshift({ total: 0, gameNum: 0 });
 
-  svg.call(
-    barChart()
-      .data(marks)
-      .datum(totalDiffByGame)
-      .margin(margin)
-      .width(width)
-      .height(height)
-  );
+  barChartInstance = barChart()
+    .data(marks)
+    .datum(totalDiffByGame)
+    .margin(margin)
+    .width(width)
+    .height(height);
+
+  svg.call(barChartInstance);
 };
 main();
+
+function updateYear(select) {
+  const year = select.value;
+  if (!year) return;
+  let startYear = new Date(year, "01", "01");
+  let endYear = new Date(year, "12", "31");
+  const filteredData = marks.filter(
+    (d) => d.Date >= startYear && d.Date <= endYear
+  );
+  barChartInstance.data(filteredData);
+  svg.call(barChartInstance);
+}
