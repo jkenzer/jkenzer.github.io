@@ -7,6 +7,8 @@ function barChart() {
 
   const my = (selection) => {
     const maxDiff = d3.max(data.map((d) => Math.abs(d.goalDifferential)));
+    const maxAgg = d3.max(datum.map((d) => Math.abs(d.total)));
+    console.log(maxAgg);
 
     const y = d3
       .scaleLinear()
@@ -25,7 +27,7 @@ function barChart() {
 
     const rightY = d3
       .scaleLinear()
-      .domain([d3.max(datum.map((d) => d.total)), 0])
+      .domain([maxAgg, maxAgg * -1])
       .range([margin.top, height - margin.bottom]);
 
     selection
@@ -33,14 +35,6 @@ function barChart() {
       .data(data)
       .join("rect")
       .attr("fill", "steelblue")
-      .attr("x", (d, i) => x(i))
-      .attr("height", (d) =>
-        d.goalDifferential > 0
-          ? y(0) - y(d.goalDifferential)
-          : y(d.goalDifferential) - y(0) || 1
-      )
-      .attr("y", (d) => (d.goalDifferential > 0 ? y(d.goalDifferential) : y(0)))
-      .attr("width", (d, i) => x(i + 1) - x(i) - 1)
       .on("mouseover", (event, d) => {
         tooltip.text(`${d.date} - ${d.score}`);
         return tooltip.style("visibility", "visible");
@@ -52,7 +46,17 @@ function barChart() {
       })
       .on("mouseout", () => {
         return tooltip.style("visibility", "hidden");
-      });
+      })
+      .transition()
+      .duration(2000)
+      .attr("x", (d, i) => x(i))
+      .attr("height", (d) =>
+        d.goalDifferential > 0
+          ? y(0) - y(d.goalDifferential)
+          : y(d.goalDifferential) - y(0) || 1
+      )
+      .attr("y", (d) => (d.goalDifferential > 0 ? y(d.goalDifferential) : y(0)))
+      .attr("width", (d, i) => x(i + 1) - x(i) - 1);
 
     selection
       .selectAll(".y-axis")
@@ -60,6 +64,8 @@ function barChart() {
       .join("g")
       .attr("class", "y-axis")
       .attr("transform", `translate(${margin.left},0)`)
+      .transition()
+      .duration(2000)
       .call(d3.axisLeft(y));
 
     selection
@@ -68,6 +74,8 @@ function barChart() {
       .join("g")
       .attr("class", "x-axis")
       .attr("transform", `translate(0,${height - margin.bottom})`)
+      .transition()
+      .duration(2000)
       .call(d3.axisBottom(x));
 
     selection
@@ -76,24 +84,30 @@ function barChart() {
       .join("g")
       .attr("class", "y-axis-right")
       .attr("transform", `translate(${width - margin.right},0)`)
+      .transition()
+      .duration(2000)
       .call(d3.axisRight(rightY));
 
-    selection
-      .selectAll(".datum-path")
-      .data(datum)
-      .join("g")
-      .attr("class", "datum-path")
+    let line = d3
+      .line()
+      .x((d, i) => x(d.gameNum))
+      .y((d, i) => rightY(d.total));
+
+    let goalDiffLine = selection
+      .selectAll(".goalDiff")
+      .data([datum], (d) => d.gameNum);
+
+    goalDiffLine
+      .enter()
       .append("path")
+      .attr("class", "goalDiff")
+      .merge(goalDiffLine)
+      .transition()
+      .duration(2000)
+      .attr("d", line)
       .attr("fill", "none")
       .attr("stroke", "rgb(236,28,36)")
-      .attr("stroke-width", 1.5)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x((d) => x(d.gameNum))
-          .y((d) => rightY(d.total))
-      );
+      .attr("stroke-width", 1.5);
 
     selection
       .append("text")

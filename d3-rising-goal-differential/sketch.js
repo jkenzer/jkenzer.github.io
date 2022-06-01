@@ -7,7 +7,6 @@ let barChartInstance;
 let svg;
 
 // TODO: Tooltips aren't working
-// TODO: culmative isn't working
 // TODO: count of games isn't working (switch to date?)
 
 async function loadData() {
@@ -127,7 +126,7 @@ function updateYear(select) {
     const total = totalPrev + d.goalDifferential;
     return {
       total,
-      gameNum: d.gameNum,
+      gameNum: i + 1,
     };
   });
   filteredDatum.unshift({ total: 0, gameNum: 0 });
