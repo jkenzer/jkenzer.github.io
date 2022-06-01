@@ -118,6 +118,20 @@ function updateYear(select) {
   const filteredData = marks.filter(
     (d) => d.Date >= startYear && d.Date <= endYear
   );
+  const filteredDatum = filteredData.map((d, i) => {
+    const gamesToSum = filteredData.filter((fd, fi) => fi < i);
+    const totalPrev = gamesToSum.reduce(
+      (accum, p) => accum + p.goalDifferential,
+      0
+    );
+    const total = totalPrev + d.goalDifferential;
+    return {
+      total,
+      gameNum: d.gameNum,
+    };
+  });
+  filteredDatum.unshift({ total: 0, gameNum: 0 });
   barChartInstance.data(filteredData);
+  barChartInstance.datum(filteredDatum);
   svg.call(barChartInstance);
 }
