@@ -22,7 +22,7 @@ function barChart() {
 
     const x = d3
       .scaleLinear()
-      .domain([0, d3.max(data.map((d, i) => i))])
+      .domain([0, d3.max(data.map((d, i) => i)) + 1])
       .range([margin.left, width - margin.right]);
 
     const rightY = d3
@@ -40,23 +40,25 @@ function barChart() {
         return tooltip.style("visibility", "visible");
       })
       .on("mousemove", (event, d) => {
-        let xPos = x(d.gameNum);
+        let xPos =
+          x(d.gameNum) -
+          d3.select(".tooltip").node().getBoundingClientRect().width / 2;
         let yPos = y(d.goalDifferential);
         return tooltip.style("top", `${yPos}px`).style("left", `${xPos}px`);
       })
       .on("mouseout", () => {
         return tooltip.style("visibility", "hidden");
       })
+      .attr("x", (d, i) => x(i))
+      .attr("width", (d, i) => x(i + 1) - x(i) - 1)
       .transition()
       .duration(2000)
-      .attr("x", (d, i) => x(i))
+      .attr("y", (d) => (d.goalDifferential > 0 ? y(d.goalDifferential) : y(0)))
       .attr("height", (d) =>
         d.goalDifferential > 0
           ? y(0) - y(d.goalDifferential)
           : y(d.goalDifferential) - y(0) || 1
-      )
-      .attr("y", (d) => (d.goalDifferential > 0 ? y(d.goalDifferential) : y(0)))
-      .attr("width", (d, i) => x(i + 1) - x(i) - 1);
+      );
 
     selection
       .selectAll(".y-axis")
@@ -138,6 +140,7 @@ function barChart() {
     let tooltip = d3
       .select("body")
       .append("div")
+      .attr("class", "tooltip")
       .style("position", "absolute")
       .style("z-index", "10")
       .style("visibility", "hidden")

@@ -6,8 +6,8 @@ let marks;
 let barChartInstance;
 let svg;
 
-// TODO: Tooltips aren't working
 // TODO: count of games isn't working (switch to date?)
+// TODO: Show home games differently from away games
 
 async function loadData() {
   const text = await (await fetch("./rising-data.csv")).text();
@@ -114,9 +114,15 @@ function updateYear(select) {
   if (!year) return;
   let startYear = new Date(year, "01", "01");
   let endYear = new Date(year, "12", "31");
-  const filteredData = marks.filter(
+  const filteredDataUnChanged = marks.filter(
     (d) => d.Date >= startYear && d.Date <= endYear
   );
+  const filteredData = filteredDataUnChanged.map((d, i) => {
+    return {
+      ...d,
+      gameNum: i + 1,
+    };
+  });
   const filteredDatum = filteredData.map((d, i) => {
     const gamesToSum = filteredData.filter((fd, fi) => fi < i);
     const totalPrev = gamesToSum.reduce(
